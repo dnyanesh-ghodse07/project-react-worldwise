@@ -6,8 +6,26 @@ import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./pages/AppLayout";
 import Login from "./pages/Login";
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [cities, setCities] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchCities() {
+      try {
+        setIsLoading(true);
+        const res = await fetch("http://localhost:8000/cities");
+        const data = await res.json();
+        setCities(data);
+        setIsLoading(false);
+      } catch (err) {
+        alert("There is some problem while fetching data");
+      }
+    }
+    fetchCities();
+  }, []);
   return (
     <BrowserRouter>
       <Routes>
