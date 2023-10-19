@@ -11,9 +11,6 @@ const AppNav = () => {
         <li>
           <NavLink to="countries">Countries</NavLink>
         </li>
-        <li>
-          <NavLink to="form">Form</NavLink>
-        </li>
       </ul>
     </div>
   );
